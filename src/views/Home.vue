@@ -51,7 +51,7 @@
             <p id="un">Unleash the Power of Words, Connect with Like-minded Readers <br>and Writers</p>  
         
         </div>           
-        <div class="get"><router-link to="/auth"><v-btn color="indigo" dark>
+        <div class="get"><router-link to="/auth"><v-btn color="deep-purple" dark>
         Get Started
   </v-btn></router-link></div>
     </div>
@@ -123,7 +123,7 @@
             <b>Adebobola Muhydeen,</b> Software developer at Apple 
             </p>
             <router-link to="/auth">
-            <v-btn color="indigo" dark>
+            <v-btn color="deep-purple" dark>
            Join Chatter
             </v-btn>
         </router-link>
@@ -143,7 +143,7 @@
                 <br>interests. connect with people of same interests and goals  
             </p>
             <router-link to="/auth">
-            <v-btn color="indigo" dark>
+            <v-btn color="deep-purple" dark>
             Get Started
             </v-btn>
         </router-link>

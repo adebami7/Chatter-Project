@@ -69,7 +69,6 @@ import { defineComponent } from "vue"
 import Register from "../components/Register.vue"
 import Login from "../components/Login.vue"
 
-
   export default defineComponent ({
    components: {Register, Login},
     data () {

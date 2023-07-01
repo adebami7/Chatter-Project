@@ -37,12 +37,12 @@
 
             <v-checkbox v-model="terms" color="secondary" label="I agree to site terms and conditions" style="margin-bottom: 0px; padding: 0px;"></v-checkbox>
 
-            <v-btn type="submit" density="compact" block class="mb-8" color="indigo-darken-2" size="large" variant="tonal" style="margin-top: 0px;">Create Account</v-btn>
+            <v-btn type="submit" density="compact" block class="mb-8" color="deep-purple" size="large" variant="tonal" style="margin-top: 0px;">Create Account</v-btn>
           </v-form>
             
             <v-checkbox v-model="terms" color="secondary" label="I agree to site terms and conditions" style="margin-bottom: 0px; padding: 0px;"></v-checkbox>
             
-            <v-btn type="submit" density="compact" block class="mb-8" color="indigo-darken-2" size="large" variant="tonal" style="margin-top: 0px;">Create Account</v-btn>
+            <v-btn type="submit" density="compact" block class="mb-8" color="deep-purple" size="large" variant="tonal" style="margin-top: 0px;">Create Account</v-btn>
           </v-form>
         </v-container>
       </v-card>
@@ -58,18 +58,21 @@
           </div>
         </v-card-text>
         <v-card-actions>
-          <v-btn color="primary" @click="confirmCode">Confirm</v-btn>
-          <v-btn color="secondary" @click="closeConfirmationModal">Close</v-btn>
+          <v-btn color="deep-purple" @click="confirmCode">Confirm</v-btn>
+          <v-btn color="deep-purple" @click="closeConfirmationModal">Close</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
   </v-app>
 </template>
 
-<script lang="ts">
+<script lang="ts" >
+import router from '@/router';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import Blog2 from './Blog2.vue';
 
+const route = useRouter();
 export default {
   setup() {
     const first = ref('');
@@ -89,6 +92,9 @@ export default {
           if (confirmationCode.value.join('') === '1234') { // Replace '1234' with your own validation logic
             alert('Confirmation successful!');
             closeConfirmationModal();
+            setTimeout(() => {
+             router.push('/blog')
+            }, 2000);
             // Additional code for further processing (e.g., redirecting to a new page)
           } else {
             alert('Invalid confirmation code. Please try again.');
@@ -113,11 +119,12 @@ export default {
         return;
       }
 
-      // Assuming successful registration
-      alert('Registration successful!');
-
       // Show confirmation code modal
       showConfirmationModal.value = true;
+
+
+
+
     };
 
     
