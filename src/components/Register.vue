@@ -99,7 +99,7 @@ export default {
           // Close confirmation code modal
           showConfirmationModal.value = false;
         };
-        
+
     const register = () => {
       // Perform form validation
       if (!first.value || !last.value || !email.value || !select.value || !password.value || !confirmPassword.value) {
