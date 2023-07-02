@@ -70,7 +70,7 @@
 import router from '@/router';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import Blog2 from './Blog2.vue';
+
 
 const route = useRouter();
 export default {
