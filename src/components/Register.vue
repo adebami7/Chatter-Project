@@ -71,7 +71,6 @@ import router from '@/router';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
-
 const route = useRouter();
 export default {
   setup() {

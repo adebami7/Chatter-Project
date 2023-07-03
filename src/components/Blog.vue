@@ -1,11 +1,18 @@
 <template>
     <v-layout class="rounded rounded-md">
+
       <v-navigation-drawer
         class="bg-light"
         theme="light"
         permanent
       >
-      <v-list-item style="padding: 20px 0 0 40px;" title="Overview"></v-list-item>
+      <v-list-item>
+            <template v-slot:prepend>
+              <img src="/src/FAOYE.png" alt="Comment Image" style="margin: 0 0 0 50px; width: 80px; height: 50px;">
+            </template>
+            
+      </v-list-item>
+      <v-list-item-title style="margin: 0 0 0 40px;">Overview</v-list-item-title>
 
         <v-list class="over" color="transparent">
           <v-list-item prepend-icon="mdi-post-outline" style="font-size: 15px;">
@@ -70,8 +77,11 @@
           ></v-list-item>
       </v-app-bar>
   
-      <v-main class="d-flex align-center justify-center" style="min-height: 300px;">
-        Main Content
+      <v-main class="align-center justify-center" style="min-height: 300px; margin: 30px 0 0 0;">
+       <h1 style="text-align: center; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+        Welome to FAOYE
+       </h1>
+       <p class="mag"><img src="src/FAOYE.png" alt="logo"></p>
       </v-main>
     </v-layout>
  
@@ -84,7 +94,12 @@
         theme="light"
         permanent
       >
-      <v-list-item style="padding: 20px 0 0 40px;" title="Overview"></v-list-item>
+      
+      <v-list-item style="padding: 20px 0 0 40px;" title="Overview">
+        
+        <img src="src/FAOYE.png" alt="Comment Image">
+      
+      </v-list-item>
 
         <v-list class="over" color="transparent">
           <v-list-item prepend-icon="mdi-post-outline" style="font-size: 15px;">
@@ -111,7 +126,11 @@
           <v-list-item title="Technology"></v-list-item>
           <v-list-item title="Machine learning"></v-list-item>
           <v-list-item title="Politics"></v-list-item>
-          <v-list-item title="See all"></v-list-item>
+          <v-list-item style="font-size: 15px;">
+            <router-link :to="`/`" class="v-list-item-content" >
+           See All
+          </router-link>
+          </v-list-item>
         
         </v-list>
 
@@ -184,5 +203,10 @@
     font-size: 10px;
     margin-left: 30px;
   }
+
+.mag{
+  align-items: center;
+  margin: 10px 0 0 28%;
+}
   </style>
   

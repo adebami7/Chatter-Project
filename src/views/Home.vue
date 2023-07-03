@@ -3,10 +3,10 @@
 
 <template>
 <div>
-    <nav class="navbar navbar-expand-lg bg-light ">
+    <nav class="navbar navbar-expand-lg bg-light " style="height: 55px;">
         <div class="container-fluid">
             <!-- <a class="navbar-brand" href="#">Navbar</a> -->
-            <p class="img"><img src="src/CHATTER.png" width="90px"  alt="logo"></p>
+            <p class="img"><img src="src/FAOYE.png" width="90px" height="60px" style="margin: 0px; padding: 5px 0 0 0;" alt="logo"></p>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

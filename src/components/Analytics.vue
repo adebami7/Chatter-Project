@@ -5,7 +5,13 @@
         theme="light"
         permanent
       >
-      <v-list-item style="padding: 20px 0 0 40px;" title="Overview"></v-list-item>
+      <v-list-item>
+            <template v-slot:prepend>
+              <img src="/src/FAOYE.png" alt="Comment Image" style="margin: 0 0 0 50px; width: 80px; height: 50px;">
+            </template>
+            
+      </v-list-item>
+      <v-list-item-title style="margin: 0 0 0 40px;">Overview</v-list-item-title>
 
         <v-list class="over" color="transparent">
           <v-list-item prepend-icon="mdi-post-outline" style="font-size: 15px;">
@@ -70,8 +76,67 @@
           ></v-list-item>
       </v-app-bar>
   
-      <v-main class="d-flex align-center justify-center" style="min-height: 300px;">
-        Main Content
+      <v-main class="main " style="min-height: 300px; padding: 110px 0 0 310px;">
+        <div>
+        <h3 style="padding: 0 0 10px 0;">Post analytics</h3>
+        <h3 style="display: flex; border-bottom: 3px solid #673AB7; padding-bottom: 5px;width: 900px;"> May 2023,
+          <p style="font-size: 15px;padding: 12px 0 0 2px;">25days so far</p>
+        </h3>
+        <p><b>Post highlights</b></p>
+        <h4 style="display: flex;"> Top posts
+          <p style="font-size: 10px;padding: 11px 0 0 4px;">earned 2980 impressions</p>
+        </h4>
+        <div class="post">
+          <div class="post-header" >
+            <v-avatar style="margin-right: 10px;">
+              <img src="https://randomuser.me/api/portraits/women/85.jpg" alt="Avatar">
+            </v-avatar>
+            <h2 class="post-title" style="font-size: 20px;"> Ademide Oye
+            <p class="post-meta" style="font-size: 10px; margin-top: 8px;">Front-End Software Engineer June 1, 2023</p>
+            </h2>
+          </div>
+          <h3 class="post-subtitle" >Starting out as a Front-End Software Engineer</h3>
+          <div style="display: flex; margin: 0px; padding: 0px; ">
+            <v-list-item prepend-icon="mdi-book-open-variant" style="width: 20px; padding: 0 0 20px 0px;"></v-list-item>
+            <p class="post-time" style="margin-bottom: 0px;padding: 5px 0 0 10px; font-size: 10px;">2 mins read</p>
+          </div>
+          <p class="post-content" style="font-size: 10px;">Embarking on a journey as a Front-End Software Engineer can be an exhilarating and fulfilling experience.
+            <br> As a profession that bridges the realms of art, technology, and problem-solving, software design  
+            <br>offers an opportunity to shape the way people interact with the world around them.</p>
+          </div>
+        </div>
+
+        <div class="get"><router-link to="/auth"><v-btn class="my-small-button" color="deep-purple" dark>
+          View post activity
+          </v-btn></router-link>
+        </div>
+        <div style="padding: 0 0 30px 0;">
+          <h3 style="margin: 20px 0 10px 0; font-size: 17px;">Posts summary</h3>
+          <p style="display: flex; font-size: 12px; border-bottom: 3px solid #673AB7; padding-bottom: 5px;width: 900px;"> May 2023 summary</p>
+    
+          <p style="display: flex; font-size: 12px; margin: 0; padding: 0px 0 0 4px;"> Posts
+            <p style="font-size: 12px; margin: 0; padding: 0px 0 0 84px;">Posts impressions</p>
+          </p>
+          <p style="display: flex; font-size: 12px; margin: 0; padding: 11px 0 0 12px;"> <b>3</b>
+            <p style="font-size: 12px; margin: 0; padding: 0px 0 0 108px;"><b>2.98k views</b></p>
+          </p>
+          <p style="display: flex; font-size: 12px; margin: 20px 0 0 0; padding: 0px 0 0 4px;"> Profile Visits
+            <p style="font-size: 12px; margin: 0; padding: 0px 0 0 52px;">New followers</p>
+          </p>
+          <p style="display: flex; font-size: 12px; margin: 0; padding: 5px 0 0 20px;"> <b>300</b>
+            <p style="font-size: 12px; margin: 0; padding: 0px 0 0 100px;"><b>300</b></p>
+          </p>
+        </div>
       </v-main>
     </v-layout>
   </template>
+
+<style scoped>
+.post-header{
+  display: flex;
+}
+.my-small-button{
+  font-size: 9px; 
+  padding: 4px 8px;
+}
+</style>

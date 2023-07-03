@@ -6,7 +6,13 @@
         theme="light"
         permanent
       >
-      <v-list-item style="padding: 20px 0 0 40px;" title="Overview"></v-list-item>
+      <v-list-item>
+            <template v-slot:prepend>
+              <img src="/src/FAOYE.png" alt="Comment Image" style="margin: 0 0 0 50px; width: 80px; height: 50px;">
+            </template>
+            
+      </v-list-item>
+      <v-list-item-title style="margin: 0 0 0 40px;">Overview</v-list-item-title>
 
         <v-list class="over" color="transparent">
           <v-list-item prepend-icon="mdi-post-outline" style="font-size: 15px;">
@@ -60,7 +66,7 @@
                 prepend-icon="mdi-magnify"
                 density="compact"
                 single-line
-              >Search Chatter</v-text-field>
+              >Search FAOYE</v-text-field>
 
               <v-list-item style="margin: 0 3px 0 0; padding: 0 1px 0 5px; width: 24px;" 
               prepend-icon="mdi-bell-outline" ></v-list-item>
@@ -71,16 +77,114 @@
           ></v-list-item>
       </v-app-bar>
   
-      <v-main class="d-flex align-center justify-center" style="min-height: 300px;">
-        <div class="body">
-      <h1 style="text-align: center;">My Blog</h1>
-      <div v-for="post in posts" :key="post.id" class="post">
-        <h2 class="post-title">{{ post.title }}</h2>
-        <div class="post-meta">Posted on {{ post.date }}</div>
-        <p class="post-content">{{ post.content }}</p>
-      </div>
-    </div>
+     
 
+      <v-main class="d-flex align-center justify-center" style="min-height: 300px; width: 200px; margin: 20px 20px 20px 20px;">
+      
+        <v-card>
+          <v-toolbar
+      color="light"
+    >
+
+      <v-toolbar-title>
+        <h2 class="post-title" style="font-size: 20px;padding: 10px 0 0 20px;"> FEED
+            <p class="post-meta" style="font-size: 10px; margin-top: 8px;">Explore different content you'd love</p>
+            </h2>
+      </v-toolbar-title>
+
+      <v-spacer></v-spacer>
+
+      <v-btn icon>
+          <div class="get"><router-link to="/auth"><v-btn small class="custom-button">
+            <v-list-item prepend-icon="mdi-pencil-outline" style=" width: 10px; margin: 0 2px 0px 0px;"></v-list-item>
+            <b>Post a content</b>
+          </v-btn></router-link>
+          </div>
+      </v-btn>
+      </v-toolbar>
+          <v-tabs
+            v-model="tab"
+            fixed-tabs
+            color="indigo-darken-2"
+            align-tabs="center"
+          >
+            <v-tab value="one">For you</v-tab>
+            <v-tab value="two">Featured</v-tab>
+            <v-tab value="three">Recent</v-tab>
+          </v-tabs>
+          <v-card-text>
+            <v-window v-model="tab">
+              <v-window-item value="one">
+                <div class="body">
+                  <div v-for="post in posts" :key="post.id" class="post">
+                    <div class="post-header" >
+                      <v-avatar style="margin-right: 10px;">
+                        <img :src="post.avatar" alt="Avatar">
+                      </v-avatar>
+                      <h2 class="post-title" style="font-size: 20px;">{{ post.title }}
+                      <p class="post-meta" style="font-size: 10px; margin-top: 8px;">Posted on {{ post.date }}</p>
+                      </h2>
+                    </div>
+                    <h3 class="post-subtitle" >{{ post.subtitle }}</h3>
+                    <div style="display: flex; margin: 0px; padding: 0px; ">
+                      <v-list-item prepend-icon="mdi-book-open-variant" style="width: 24px; padding: 0 10px;"></v-list-item>
+                      <p class="post-time" style="margin-bottom: 0px;padding: 9.5px 0 0 15px;">{{ post.time }}</p>
+                    </div>
+                    
+                    
+                    <p class="post-content" style="font-size: 10px;">{{ post.content }}</p>
+                    <!-- Display images after comments -->
+                    <div class="comment-images">
+                      <img v-for="image in post.commentImages" :key="image.id" :src="image.url" alt="Comment Image">
+                    </div>
+                  </div>
+                </div>
+              </v-window-item>
+
+              <v-window-item value="two">
+                <div class="body">
+                  <div v-for="post in posts" :key="post.id" class="post">
+                    <div class="post-header" >
+                      <v-avatar style="margin-right: 10px;">
+                        <img :src="post.avatar" alt="Avatar">
+                      </v-avatar>
+                      <h2 class="post-title" style="font-size: 20px;">{{ post.title }}
+                      <p class="post-meta" style="font-size: 10px; margin-top: 8px;">Posted on {{ post.date }}</p>
+                      </h2>
+                    </div>
+                    <h3 class="post-subtitle" >{{ post.subtitle }}</h3>
+                    <p class="post-content" style="font-size: 10px;">{{ post.content }}</p>
+                    <!-- Display images after comments -->
+                    <div class="comment-images">
+                      <img v-for="image in post.commentImages" :key="image.id" :src="image.url" alt="Comment Image">
+                    </div>
+                  </div>
+                </div>
+              </v-window-item>
+
+              <v-window-item value="three">
+                <div class="body">
+                  <div v-for="post in posts" :key="post.id" class="post">
+                    <div class="post-header" >
+                      <v-avatar style="margin-right: 10px;">
+                        <img :src="post.avatar" alt="Avatar">
+                      </v-avatar>
+                      <h2 class="post-title" style="font-size: 20px;">{{ post.title }}
+                      <p class="post-meta" style="font-size: 10px; margin-top: 8px;">Posted on {{ post.date }}</p>
+                      </h2>
+                    </div>
+                    <h3 class="post-subtitle" >{{ post.subtitle }}</h3>
+                    <p class="post-content" style="font-size: 10px;">{{ post.content }}</p>
+                    <!-- Display images after comments -->
+                    <div class="comment-images">
+                      <img v-for="image in post.commentImages" :key="image.id" :src="image.url" alt="Comment Image">
+                    </div>
+                  </div>
+                </div>
+              </v-window-item>
+            </v-window>
+          </v-card-text>
+        </v-card>
       </v-main>
     </v-layout>
 </template>
@@ -92,42 +196,56 @@ import { defineComponent } from "vue";
 export default defineComponent({
     data () {
       return {
+        tab: null,
+        dialog:false,
         posts:  [
         {
           id: 1,
-          title: 'First Blog Post',
+          title: 'Ademide Oye',
           date: 'June 1, 2023',
-          content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce interdum fermentum risus, sed semper ex laoreet eu.'
+          subtitle: 'Starting out as a Front-End Software Engineer',
+          time: '2 mins read',
+          content: 'Embarking on a journey as a Front-End Software Engineer can be an exhilarating and fulfilling experience. As a profession that bridges the realms of art, technology, and problem-solving, software design offers an opportunity to shape the way people interact with the world around them.',
+          avatar: 'https://randomuser.me/api/portraits/women/85.jpg',
+          commentImages: [
+            { id: 1, url: "src/unsplash_zvmZiw3vdsQ.png" },
+          ]
         },
         {
           id: 2,
-          title: 'Second Blog Post',
+          title: 'Ayo Oye',
           date: 'June 5, 2023',
-          content: 'Vestibulum sit amet urna eu tellus interdum rhoncus. Nulla facilisi. Aliquam placerat libero ac justo convallis, vel pulvinar odio commodo.'
+          subtitle: 'Using CSS Selectors',
+          time: '6 mins read',
+          content: 'Cascading Style Sheets (CSS) is a fundamental technology that lies at the heart of modern web design. It empowers developers and designers to transform plain HTML into visually captivating and interactive web pages.',
+          avatar: 'https://randomuser.me/api/portraits/men/85.jpg',
+          commentImages: [
+          { id: 2, url: "src/Frame 43318.png" },
+          ]
         },
         {
           id: 3,
-          title: 'Third Blog Post',
+          title: 'Jed Glory',
           date: 'June 9, 2023',
-          content: 'Vestibulum sit amet urna eu tellus interdum rhoncus. Nulla facilisi. Aliquam placerat libero ac justo convallis, vel pulvinar odio commodo.'
+          subtitle: 'The Impact of Social',
+          time: '8 mins read',
+          content: 'In the era of digital communication, social media platforms have become pervasive in our daily lives, revolutionizing the way we connect, share information, and engage with the world.',
+          avatar: 'https://randomuser.me/api/portraits/women/75.jpg',
+          commentImages: [
+          { id: 3, url: "src/unsplash_wqLGlhjr6Og.png" },
+          ]
         },
         {
           id: 4,
-          title: 'Fourth Blog Post',
+          title: 'James Lawren',
           date: 'June 13, 2023',
-          content: 'Vestibulum sit amet urna eu tellus interdum rhoncus. Nulla facilisi. Aliquam placerat libero ac justo convallis, vel pulvinar odio commodo.'
-        },
-        {
-          id: 5,
-          title: 'Fifth Blog Post',
-          date: 'June 17, 2023',
-          content: 'Vestibulum sit amet urna eu tellus interdum rhoncus. Nulla facilisi. Aliquam placerat libero ac justo convallis, vel pulvinar odio commodo.'
-        },
-        {
-          id: 6,
-          title: 'Sixth Blog Post',
-          date: 'June 21, 2023',
-          content: 'Vestibulum sit amet urna eu tellus interdum rhoncus. Nulla facilisi. Aliquam placerat libero ac justo convallis, vel pulvinar odio commodo.'
+          subtitle: 'Starting out as a product designer',
+          time: '10 mins read',
+          content: 'Embarking on a journey as a product designer can be an exhilarating and fulfilling experience. As a profession that bridges the realms of art, technology, and problem-solving, product design offers an opportunity to shape the way people interact with the world around them.',
+          avatar: 'https://randomuser.me/api/portraits/women/81.jpg',
+          commentImages: [
+          { id: 4, url: "src/unsplash_87gLIFoj79c.png" },
+          ]
         }
         // Add more blog posts as needed
       ]
@@ -136,3 +254,25 @@ export default defineComponent({
   });
 
 </script>
+
+<style scoped>
+.comment-images{
+  margin-bottom: 30px;
+}
+
+.post-header {
+    display: flex;
+  
+  }
+  .post-header v-avatar {
+    margin-right: 10px;
+  }
+
+  .custom-button{
+  font-size: 9px; 
+  padding: 0 5px 0 5px;
+  margin: 0 60px 0 5px;
+  background-color: #673AB7;
+  color: white;
+}
+</style>
