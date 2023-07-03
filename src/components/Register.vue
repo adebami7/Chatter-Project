@@ -4,16 +4,19 @@
       <v-card class="mx-auto" max-width="344" title="Register as a Writer/Reader" style="text-align: center; padding: 5px 0 20px 0;">
         <v-container style="height: 72.5vh; padding: 0 15px 0px 15px;">
           <v-form @submit.prevent="register">
-            <v-form @submit.prevent="register">
             <div class="first">
               <v-text-field v-model="first" color="primary" density="compact" label="First name" variant="outlined"></v-text-field>
               <v-text-field v-model="last" color="primary" density="compact" label="Last name" variant="outlined" style="margin-left: 20px;"></v-text-field>
             </div>
 
             <div class="sec">
-              <v-col cols="12" style="padding: 3px;">
-                <v-combobox v-model="select" density="compact" :items="items" label="You're joining as?" multiple></v-combobox>
-              </v-col>
+              <v-combobox
+                label="Combobox"
+                v-model="select"
+                :items="items"
+                variant="outlined"
+                density="compact"
+              ></v-combobox>
               <v-text-field v-model="email" color="primary" density="compact" label="Email" variant="outlined"></v-text-field>
               <v-text-field
                 v-model="password"
@@ -37,12 +40,9 @@
 
             <v-checkbox v-model="terms" color="secondary" label="I agree to site terms and conditions" style="margin-bottom: 0px; padding: 0px;"></v-checkbox>
 
-            <v-btn type="submit" density="compact" block class="mb-8" color="deep-purple" size="large" variant="tonal" style="margin-top: 0px;">Create Account</v-btn>
-          </v-form>
-            
-            <v-checkbox v-model="terms" color="secondary" label="I agree to site terms and conditions" style="margin-bottom: 0px; padding: 0px;"></v-checkbox>
-            
-            <v-btn type="submit" density="compact" block class="mb-8" color="deep-purple" size="large" variant="tonal" style="margin-top: 0px;">Create Account</v-btn>
+            <v-btn type="submit" density="compact" block class="mb-8 custom-button" size="large" variant="tonal" style="margin-top: 0px;">
+              Create Account
+            </v-btn>
           </v-form>
         </v-container>
       </v-card>
@@ -54,8 +54,18 @@
         <v-card-text style="text-align: center;">
           <p style="font-size: 14px;">We emailed you a code, please input the code for account verification</p>
           <div class="confirmation-code-input" style="margin: 0 0 0 -30px;">
-            <input v-for="(code, index) in confirmationCode" :key="index" v-model="confirmationCode[index]" style="border: black solid; border-radius: 5px; width: 60px; text-align: center;" type="text" maxlength="1" required>
-          </div>
+      <input
+      v-for="(code, index) in confirmationCode"
+  :key="index"
+  v-model="confirmationCode[index]"
+  :class="{ active: index === activeInputIndex }"
+  style="border: black solid; border-radius: 5px; width: 60px; text-align: center;"
+  type="text"
+  maxlength="1"
+  required
+  @keydown="handleArrowKeys"
+>
+    </div>
         </v-card-text>
         <v-card-actions>
           <v-btn color="deep-purple" @click="confirmCode">Confirm</v-btn>
@@ -66,9 +76,9 @@
   </v-app>
 </template>
 
-<script lang="ts" >
+<script lang="ts">
 import router from '@/router';
-import { ref } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import { useRouter } from 'vue-router';
 
 const route = useRouter();
@@ -79,31 +89,55 @@ export default {
     const email = ref('');
     const password = ref('');
     const confirmPassword = ref('');
-    const select = ref([""]);
+    const select = ref('');
     const items = ref(['Writer', 'Reader']);
     const visible = ref(false);
     const terms = ref(false);
     const showConfirmationModal = ref(false);
+    const activeInputIndex = ref(0);
     const confirmationCode = ref(['', '', '', '']);
     
-    const confirmCode = () => {
-          // Perform confirmation code validation
-          if (confirmationCode.value.join('') === '1234') { // Replace '1234' with your own validation logic
-            alert('Confirmation successful!');
-            closeConfirmationModal();
-            setTimeout(() => {
-             router.push('/blog')
-            }, 2000);
-            // Additional code for further processing (e.g., redirecting to a new page)
-          } else {
-            alert('Invalid confirmation code. Please try again.');
-          }
-        };
 
-        const closeConfirmationModal = () => {
-          // Close confirmation code modal
-          showConfirmationModal.value = false;
-        };
+    const handleArrowKeys = (event: KeyboardEvent) => {
+  const { key } = event;
+  
+  if (key === 'ArrowLeft' && activeInputIndex.value > 0) {
+    activeInputIndex.value--;
+  } else if (key === 'ArrowRight' && activeInputIndex.value < confirmationCode.value.length - 1) {
+    activeInputIndex.value++;
+  }
+};
+
+
+    onMounted(() => {
+      window.addEventListener('keydown', handleArrowKeys);
+    });
+
+    onUnmounted(() => {
+      window.removeEventListener('keydown', handleArrowKeys);
+    });
+
+    const confirmCode = () => {
+      // Perform confirmation code validation
+      if (confirmationCode.value.join('') === '1234') {
+        // Replace '1234' with your own validation logic
+        closeConfirmationModal();
+        setTimeout(() => {
+          alert('Confirmation successful!');
+          setTimeout(() => {
+            router.push('/blog');
+          }, 0);
+        }, 0);
+        // Additional code for further processing (e.g., redirecting to a new page)
+      } else {
+        alert('Invalid confirmation code. Please try again.');
+      }
+    };
+
+    const closeConfirmationModal = () => {
+      // Close confirmation code modal
+      showConfirmationModal.value = false;
+    };
 
     const register = () => {
       // Perform form validation
@@ -117,16 +151,9 @@ export default {
         alert('Passwords do not match.');
         return;
       }
-
       // Show confirmation code modal
       showConfirmationModal.value = true;
-
-
-
-
     };
-
-    
 
     return {
       first,
@@ -139,12 +166,14 @@ export default {
       visible,
       terms,
       showConfirmationModal,
+      activeInputIndex,
       confirmationCode,
       register,
       confirmCode,
-      closeConfirmationModal
+      closeConfirmationModal,
+      handleArrowKeys
     };
-  }
+  },
 };
 </script>
 
@@ -165,4 +194,14 @@ h1 {
   justify-content: space-around;
   margin-top: 10px;
 }
+
+.confirmation-code-input input.active {
+  border-color: #222B4C;
+}
+
+.custom-button {
+  background-color: #222B4C;
+  color: white;
+}
+
 </style>

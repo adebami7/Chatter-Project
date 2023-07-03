@@ -47,16 +47,15 @@
             Warning: After 3 consecutive failed login attempts, you account will be temporarily locked for three hours. If you must login now, you can also click "Forgot login password?" below to reset the login password.
           </v-card-text> -->
         </v-card>
-  
-        <v-btn
-          block
-          class="mb-8"
-          color="indigo-darken-2"
-          size="large"
-          variant="tonal"
-        >
-          Log In
+
+        <router-link to="/blog" 
+        class="v-btn-link">
+        <v-btn 
+        style="background-color: #222B4C; color: white;" 
+        dark block>
+        Log In
         </v-btn>
+      </router-link>
   
         <v-card-text class="text-center">
           <a
@@ -89,6 +88,10 @@ const visible = ref(false);
 } 
 .pa-12{
     padding: 5px;
+}
+.v-btn-link{
+  text-decoration: none;
+  size: large;
 }
 </style>
 

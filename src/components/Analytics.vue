@@ -7,7 +7,7 @@
       >
       <v-list-item>
             <template v-slot:prepend>
-              <img src="/src/FAOYE.png" alt="Comment Image" style="margin: 0 0 0 50px; width: 80px; height: 50px;">
+              <img src="/src/moment.png" alt="Comment Image" style="margin: 0px; width: 150px; height: 80px;">
             </template>
             
       </v-list-item>
@@ -38,7 +38,11 @@
           <v-list-item title="Technology"></v-list-item>
           <v-list-item title="Machine learning"></v-list-item>
           <v-list-item title="Politics"></v-list-item>
-          <v-list-item title="See all"></v-list-item>
+          <v-list-item style="font-size: 15px;">
+            <router-link :to="`/blog`" class="v-list-item-content">
+              See All
+            </router-link>
+          </v-list-item>
         
         </v-list>
 
@@ -50,24 +54,24 @@
         </v-list>
 
         <template v-slot:append>
-          <div class="red">
-            <v-btn color="deep-purple" block>
-              Logout
-            </v-btn>
-          </div>
+          <div class="log"><router-link to="/" class="v-btn-link"><v-btn style="background-color: #222B4C; color: #ffffff; border-radius: 2px;" dark block>
+        Log Out
+  </v-btn></router-link></div>
         </template>
       </v-navigation-drawer>
   
       <v-app-bar >
         <v-spacer></v-spacer>
-              <v-text-field
-                hide-details
-                prepend-icon="mdi-magnify"
-                density="compact"
-                single-line
-              >Search Chatter</v-text-field>
+        <v-text-field
+        v-model="search"
+        append-icon="mdi-magnify"
+        density="compact"
+        label="Search Moment"
+        single-line
+        hide-details
+      ></v-text-field>
 
-              <v-list-item style="margin: 0 3px 0 0; padding: 0 1px 0 5px; width: 24px;" 
+              <v-list-item style="margin: 0 10px 0 0; padding: 0 1px 0 10px; width: 24px;" 
               prepend-icon="mdi-bell-outline" ></v-list-item>
 
 
@@ -79,7 +83,7 @@
       <v-main class="main " style="min-height: 300px; padding: 110px 0 0 310px;">
         <div>
         <h3 style="padding: 0 0 10px 0;">Post analytics</h3>
-        <h3 style="display: flex; border-bottom: 3px solid #673AB7; padding-bottom: 5px;width: 900px;"> May 2023,
+        <h3 style="display: flex; border-bottom: 3px solid #222B4C; padding-bottom: 5px;width: 900px;"> May 2023,
           <p style="font-size: 15px;padding: 12px 0 0 2px;">25days so far</p>
         </h3>
         <p><b>Post highlights</b></p>
@@ -106,13 +110,13 @@
           </div>
         </div>
 
-        <div class="get"><router-link to="/auth"><v-btn class="my-small-button" color="deep-purple" dark>
+        <div class="get"><router-link to="/feed"><v-btn class="my-small-button" dark>
           View post activity
           </v-btn></router-link>
         </div>
         <div style="padding: 0 0 30px 0;">
           <h3 style="margin: 20px 0 10px 0; font-size: 17px;">Posts summary</h3>
-          <p style="display: flex; font-size: 12px; border-bottom: 3px solid #673AB7; padding-bottom: 5px;width: 900px;"> May 2023 summary</p>
+          <p style="display: flex; font-size: 12px; border-bottom: 3px solid #222B4C; padding-bottom: 5px;width: 900px;"> May 2023 summary</p>
     
           <p style="display: flex; font-size: 12px; margin: 0; padding: 0px 0 0 4px;"> Posts
             <p style="font-size: 12px; margin: 0; padding: 0px 0 0 84px;">Posts impressions</p>
@@ -131,6 +135,16 @@
     </v-layout>
   </template>
 
+<script lang="ts">
+  export default {
+    data () {
+      return {
+        search: '',
+      }
+    }
+  }
+</script>
+
 <style scoped>
 .post-header{
   display: flex;
@@ -138,5 +152,11 @@
 .my-small-button{
   font-size: 9px; 
   padding: 4px 8px;
+  background-color: #222B4C;
+  color: white;
+}
+.v-btn-link{
+  text-decoration: none;
+  
 }
 </style>

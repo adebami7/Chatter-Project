@@ -5,7 +5,7 @@
       <div class="tell">
         <img class="image" src="../unsplash_9pjBx5uVBlg.png" alt="logo">
         <div class="well">
-          <h1>Chatter</h1>
+          <h1>Moment</h1>
           <p id="un">Unleash the Power of Words, Connect with Like-
             minded Readers and Writers
           </p>

@@ -7,8 +7,8 @@
         permanent
       >
       <v-list-item>
-            <template v-slot:prepend>
-              <img src="/src/FAOYE.png" alt="Comment Image" style="margin: 0 0 0 50px; width: 80px; height: 50px;">
+        <template v-slot:prepend>
+              <img src="/src/moment.png" alt="Comment Image" style="margin: 0px; width: 150px; height: 80px;">
             </template>
             
       </v-list-item>
@@ -39,7 +39,11 @@
           <v-list-item title="Technology"></v-list-item>
           <v-list-item title="Machine learning"></v-list-item>
           <v-list-item title="Politics"></v-list-item>
-          <v-list-item title="See all"></v-list-item>
+          <v-list-item style="font-size: 15px;">
+            <router-link :to="`/blog`" class="v-list-item-content">
+              See All
+            </router-link>
+          </v-list-item>
         
         </v-list>
 
@@ -51,24 +55,25 @@
         </v-list>
 
         <template v-slot:append>
-          <div class="red">
-            <v-btn color="deep-purple" block>
-              Logout
-            </v-btn>
-          </div>
+          <div class="log"><router-link to="/" class="v-btn-link"><v-btn style="background-color: #222B4C; color: white; border-radius: 2px;" dark block>
+        Log Out
+  </v-btn></router-link></div>
+    
         </template>
       </v-navigation-drawer>
   
       <v-app-bar >
         <v-spacer></v-spacer>
-              <v-text-field
-                hide-details
-                prepend-icon="mdi-magnify"
-                density="compact"
-                single-line
-              >Search FAOYE</v-text-field>
+        <v-text-field
+        v-model="search"
+        append-icon="mdi-magnify"
+        density="compact"
+        label="Search Moment"
+        single-line
+        hide-details
+      ></v-text-field>
 
-              <v-list-item style="margin: 0 3px 0 0; padding: 0 1px 0 5px; width: 24px;" 
+              <v-list-item style="margin: 0 10px 0 0; padding: 0 1px 0 10px; width: 24px;" 
               prepend-icon="mdi-bell-outline" ></v-list-item>
 
 
@@ -95,8 +100,8 @@
       <v-spacer></v-spacer>
 
       <v-btn icon>
-          <div class="get"><router-link to="/auth"><v-btn small class="custom-button">
-            <v-list-item prepend-icon="mdi-pencil-outline" style=" width: 10px; margin: 0 2px 0px 0px;"></v-list-item>
+          <div class="get"><router-link to="/post"><v-btn small class="custom-button">
+            <v-list-item prepend-icon="mdi-pencil-outline" style=" width: 10px; margin: 0 2px 0px 0px; padding: 0;"></v-list-item>
             <b>Post a content</b>
           </v-btn></router-link>
           </div>
@@ -196,6 +201,7 @@ import { defineComponent } from "vue";
 export default defineComponent({
     data () {
       return {
+        search: '',
         tab: null,
         dialog:false,
         posts:  [
@@ -267,12 +273,15 @@ export default defineComponent({
   .post-header v-avatar {
     margin-right: 10px;
   }
-
+  
   .custom-button{
   font-size: 9px; 
-  padding: 0 5px 0 5px;
-  margin: 0 60px 0 5px;
-  background-color: #673AB7;
+  padding: 0 5px 5px 5px;
+  margin: 0 90px 0 0px;
+  background-color: #222B4C;
   color: white;
+}
+.v-btn-link{
+  text-decoration: none;
 }
 </style>

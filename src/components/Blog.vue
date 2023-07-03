@@ -7,8 +7,8 @@
         permanent
       >
       <v-list-item>
-            <template v-slot:prepend>
-              <img src="/src/FAOYE.png" alt="Comment Image" style="margin: 0 0 0 50px; width: 80px; height: 50px;">
+        <template v-slot:prepend>
+              <img src="/src/moment.png" alt="Comment Image" style="margin: 0px; width: 150px; height: 80px;">
             </template>
             
       </v-list-item>
@@ -51,24 +51,23 @@
         </v-list>
 
         <template v-slot:append>
-          <div class="red">
-            <v-btn color="deep-purple" block>
-              Logout
-            </v-btn>
-          </div>
-        </template>
+          <div class="log"><router-link to="/" class="v-btn-link"><v-btn style="background-color: #222B4C; color: white; border-radius: 2px;" dark block>
+        Log Out
+  </v-btn></router-link></div>
+  </template>
       </v-navigation-drawer>
   
       <v-app-bar >
         <v-spacer></v-spacer>
-              <v-text-field
-                hide-details
-                prepend-icon="mdi-magnify"
-                density="compact"
-                single-line
-              >Search Chatter</v-text-field>
-
-              <v-list-item style="margin: 0 3px 0 0; padding: 0 1px 0 5px; width: 24px;" 
+        <v-text-field
+        v-model="search"
+        append-icon="mdi-magnify"
+        density="compact"
+        label="Search Moment"
+        single-line
+        hide-details
+      ></v-text-field>
+              <v-list-item style="margin: 0 10px 0 0; padding: 0 1px 0 10px; width: 24px;" 
               prepend-icon="mdi-bell-outline" ></v-list-item>
 
 
@@ -78,10 +77,10 @@
       </v-app-bar>
   
       <v-main class="align-center justify-center" style="min-height: 300px; margin: 30px 0 0 0;">
-       <h1 style="text-align: center; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
-        Welome to FAOYE
+       <h1 style="text-align: center; margin: 0 0 0 30px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 70px;">
+        Welome to <h1 style="margin: 2px 0 0 -10px ;">FAOYE</h1>
        </h1>
-       <p class="mag"><img src="src/FAOYE.png" alt="logo"></p>
+       <p class="mag" style="margin: 0 0 0 300px;"><img src="src/moment.png" alt="logo"></p>
       </v-main>
     </v-layout>
  
@@ -97,7 +96,7 @@
       
       <v-list-item style="padding: 20px 0 0 40px;" title="Overview">
         
-        <img src="src/FAOYE.png" alt="Comment Image">
+        <img src="src/moment.png" alt="Comment Image">
       
       </v-list-item>
 
@@ -142,12 +141,13 @@
         </v-list>
 
         <template v-slot:append>
-          <div class="red">
-            <v-btn color="deep-purple" block>
-              Logout
-            </v-btn>
-          </div>
+          <div class="log"><router-link to="/" class="v-btn-link"><v-btn style="background-color: #222B4C; border-radius: 2px;" dark block>
+        Log Out
+  </v-btn></router-link></div>
+    
         </template>
+
+
       </v-navigation-drawer>
       <v-main style="height: 400px"></v-main>
     </v-layout>
@@ -161,7 +161,10 @@
   const route = useRouter
   export default defineComponent({
     data () {
-      return 
+      return {
+        search:'',
+      }
+
       }
     });
   
@@ -207,6 +210,9 @@
 .mag{
   align-items: center;
   margin: 10px 0 0 28%;
+}
+.v-btn-link{
+ text-decoration: none;
 }
   </style>
   

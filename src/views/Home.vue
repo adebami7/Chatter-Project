@@ -3,38 +3,27 @@
 
 <template>
 <div>
-    <nav class="navbar navbar-expand-lg bg-light " style="height: 55px;">
+    <nav class="navbar navbar-expand-lg bg-light " style="height: 50px;">
         <div class="container-fluid">
             <!-- <a class="navbar-brand" href="#">Navbar</a> -->
-            <p class="img"><img src="src/FAOYE.png" width="90px" height="60px" style="margin: 0px; padding: 5px 0 0 0;" alt="logo"></p>
+            <p class="img"><img src="src/moment.png" width="150px" height="100px" style="margin: 0px; padding: 15px 0 0 0;" alt="logo"></p>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse flex-grow-0" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-link" href="#">Home</a>
-                    <a class="nav-link" href="#">About Us</a>
-                    <a class="nav-link" href="#">Contacts</a>
-                    <a class="nav-link" href="#">Blogs</a>
-                    <!-- <a class="nav-link" href="#"><v-btn
-                    block
-                    class="mb-8"
-                    bg-color="light"
-                    size="small"
-                    variant="tonal"
-                    >
-                    Log In
-                    </v-btn>
-                    </a>
-                    <a class="nav-link" href="#"><v-btn
-                    block
-                    class="mb-8"
-                    color="primary"
-                    size="small"
-                    variant="tonal"
-                    >
-                    Sign In
-                    </v-btn>
+                <div class="navbar-nav" style="font-weight: bold; font-size: 20px;">
+                    <a class="nav-link" href="/">Home</a>
+                    <!-- <a class="nav-link" href="#">About Us</a> -->
+                    <a class="nav-link" href="/blog">Blogs</a>
+                    <!-- <a class="nav-link" href="#">Contact</a> -->
+                    <!-- <a class="nav-link" href="#"><router-link to="/blog" 
+                        class="v-btn-link">
+                        <v-btn class="x-small-button"
+                        style="background-color: #222B4C; color: white;" 
+                        dark >
+                        Log In
+                        </v-btn>
+                        </router-link>
                     </a> -->
                     
                 </div>
@@ -46,27 +35,27 @@
         <img class="image" src="src/unsplash_-2vD8lIhdnw.png" alt="logo">
         <div class="well">
             <h1>
-                Welcome to Chatter: A Haven for Text-<br>Based Content
+                Welcome to Moment: A Haven for Text-<br>Based Content
             </h1>   
             <p id="un">Unleash the Power of Words, Connect with Like-minded Readers <br>and Writers</p>  
         
         </div>           
-        <div class="get"><router-link to="/auth"><v-btn color="deep-purple" dark>
+        <div class="get"><router-link to="/auth"><v-btn style="background-color: #222B4C; color: white;" dark >
         Get Started
   </v-btn></router-link></div>
     </div>
     <div class="about">
         <div>
             <h3>
-                About Chatter
+                About Moment
             </h3>
             <p class="bot">
-                Chatter is a multi-functional platform where authors and readers can have access
+                Moment is a multi-functional platform where authors and readers can have access
                 <br>to their own content. It aims to be a traditional bookworm's heaven and a blog to 
                 <br>get access to more text based content. Our vision is to foster an inclusive and 
                 <br>vibrant community where diversity is celebrated. We encourage open-
                 <br>mindedness and respect for all individuals, regardless of their backgrounds or 
-                <br>beliefs. By promoting dialogue and understanding, we strive 
+                <br>beliefs. With moment, you can share your mind anywhere, anytime.
             </p>
         </div>
         <div class="mage">
@@ -74,7 +63,7 @@
         </div>
     </div>
     <div class="why">
-        <h2>Why you should join chatter</h2>
+        <h2>Why you should join Moment</h2>
         <p class="goal">
             Our goal is to make writers and readers see our platform as their next heaven for blogging, ensuring ease in interactions, 
             <br>connecting with like-minded peers, have access to favorite content based on interests and able to communicate your great 
@@ -116,16 +105,16 @@
     <div class="eclipse">
         <img src="src/unsplash_ZHvM3XIOHoE.png" style="margin-left: 40px; padding: 50px 0 50px 30px; border-radius: 50%;">
         <h2 style="font-size: 15px; padding:100px 0 0 100px;">
-            "Chatter has become an integral part of my online experience. As a user of this incredible blogging platform, I 
+            "Moment has become an integral part of my online experience. As a user of this incredible blogging platform, I 
             <br>have discovered a vibrant community of individuals who are passionate about sharing their ideas and engaging
             <br>in thoughtful discussions."
             <p style="padding: 20px 0 0 0 ;">
-            <b>Adebobola Muhydeen,</b> Software developer at Apple 
+            <b>Oloruntoba Oluwaferanmi,</b> Software developer at Apple 
             </p>
             <router-link to="/auth">
-            <v-btn color="deep-purple" dark>
-           Join Chatter
-            </v-btn>
+                <v-btn style="background-color: #222B4C; color: white;" dark >
+        Join Moment
+  </v-btn>
         </router-link>
         </h2>
         
@@ -137,15 +126,15 @@
         
         <h2 style="font-size: 35px; padding:50px 0 0 100px;">
             Write, read and connect 
-            <br>with great minds on chatter
+            <br>with great minds on moment
             <p style="padding: 30px 0 0 0 ; font-size: 13px;">
                 Share people your great ideas, and also read write-ups based on your 
-                <br>interests. connect with people of same interests and goals  
+                <br>interests. Connect with people of same interests and goals.  
             </p>
             <router-link to="/auth">
-            <v-btn color="deep-purple" dark>
-            Get Started
-            </v-btn>
+                <v-btn style="background-color: #222B4C; color: white;" dark >
+        Get Started
+  </v-btn>
         </router-link>
         </h2>
         
@@ -159,7 +148,7 @@
     <div class="row">
       <div class="col-lg-3 mb-3">
         <a class="d-inline-flex align-items-center mb-2 link-dark text-decoration-none" href="/" aria-label="Bootstrap">
-          <img src="src/CHATTER.png" width="100px" class="d-block me-2" />
+          <img src="src/moment.png" width="200px" height="100px"  class="d-block me-2"  />
           <span class="fs-5"></span>
         </a>
 
@@ -200,6 +189,21 @@
     padding-bottom:0px;
     justify-content:space-around;
 }
+
+.nav-link{
+    color: #222B4C;
+    padding: 5px 0 0 0 ;
+}
+
+.v-btn-link{
+   width: 10px;
+}
+
+.x-small-button {
+  font-size: 10px;
+  padding: 2px 4px;
+}
+
 .img{
     padding-left:30px;
     
@@ -219,7 +223,7 @@ p .img{
 
 .well{
     position: absolute;
-      top: 30%;
+      top: 40%;
       left: 45%;
       transform: translate(-50%, -50%);
       color: white;
@@ -228,8 +232,8 @@ p .img{
 }
 .get{
     position:absolute;
-      top: 45%;
-      left: 25%;
+      top: 55%;
+      left: 24%;
       transform: translate(-50%, -50%);
       color: #ffffff;
       font-size: 14px;
@@ -263,7 +267,7 @@ h3{
 }
 .box{
     display: flex;
-    margin-left: 130px;
+    margin-left: 100px;
     text-align: justify;
     
 }
