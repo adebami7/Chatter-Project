@@ -1,6 +1,6 @@
-# chatter-project
+# Moment-project
 
-This template should help get you started developing with Vue 3 in Vite.
+The Moment project is all about a blog site where you choose to be either a Reader or Writer. You can read posts that intrest your liking and same goes for writing, you can write posts and  publish for others to see.
 
 ## Recommended IDE Setup
 
@@ -22,6 +22,10 @@ If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has a
 See [Vite Configuration Reference](https://vitejs.dev/config/).
 
 ## Project Setup
+
+```sh
+npm init vue@latest
+```
 
 ```sh
 npm install
