@@ -19,13 +19,13 @@
         <div class="text-subtitle-1 text-medium-emphasis d-flex align-center justify-space-between">
           Password
   
-          <a
+          <!-- <a
             class="text-caption text-decoration-none text-indigo-darken-2"
             href="#"
             rel="noopener noreferrer"
             target="_blank"
           >
-            Forgot login password?</a>
+            Forgot login password?</a> -->
         </div>
   
         <v-text-field
@@ -71,10 +71,62 @@
     </div>
   </template>
 
-<script lang="ts" setup>
+<script lang="ts" >
 import { defineComponent, ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { getAuth, signInWithEmailAndPassword} from "firebase/auth";
+import {db, auth} from '../firebase/firebase'
+import router from '@/router';
 
-const visible = ref(false);
+
+
+const route = useRouter();
+
+export default {
+  setup() {
+    const email = ref('');
+    const password = ref('');
+    const visible = ref(false);
+  
+
+    const login = async() => {
+      signInWithEmailAndPassword(auth, email.value, password.value)
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        setTimeout(() => {
+          router.push('/blog')
+        }, 1000);
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode)
+      });
+    }
+
+  //   const forgotpassword = async() => {
+  //     sendPasswordResetEmail(auth, email.value)
+  // .then(() => {
+  //   alert('Confirmation successful!');
+  //   // Password reset email sent!
+  //   // ..
+  // })
+  // .catch((error) => {
+  //   const errorCode = error.code;
+  //   const errorMessage = error.message;
+  //   // ..
+  // });
+  //   }
+
+      return {
+      email,
+      password,
+      visible
+    };
+  }
+}
 
 
 </script>
@@ -103,67 +155,4 @@ const visible = ref(false);
 
 
 
-<!-- <template>
-    <v-sheet class="bg-deep-purple pa-12" rounded>
-      <v-card class="mx-auto px-6 py-8" max-width="344">
-        <v-form v-model="form" @submit.prevent="onSubmit">
-          <p>Email Address</p>
-            <v-text-field
-            v-model="email"
-            :readonly="loading"
-            :rules="[required]"
-            class="mb-2"
-            clearable
-            label="Email"
-          ></v-text-field>
-            <p>Password</p>
-          <v-text-field
-            v-model="password"
-            :readonly="loading"
-            :rules="[required]"
-            clearable
-            label="Password"
-            placeholder="Enter your password"
-          ></v-text-field>
-  
-          <br>
-  
-          <v-btn
-            :disabled="!form"
-            :loading="loading"
-            block
-            color="success"
-            size="large"
-            type="submit"
-            variant="elevated"
-          >
-            Log In
-          </v-btn>
-        </v-form>
-      </v-card>
-    </v-sheet>
-  </template>
-  
-  <script setup lang="ts">
-  import { ref } from 'vue';
-  
-  const form = ref(false);
-  const email = ref(null);
-  const password = ref(null);
-  const loading = ref(false);
-  
-  const required = (v: any) => !!v || 'Field is required';
-  
-  const onSubmit = () => {
-    if (!form.value) return;
-  
-    loading.value = true;
-  
-    setTimeout(() => {
-      loading.value = false;
-    }, 2000);
-  };
-  
-  </script>
-   -->
 

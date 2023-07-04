@@ -126,8 +126,28 @@
   </template>
   
   <script lang="ts">
+  import { useRouter } from 'vue-router';
+  import { getAuth, signOut } from "firebase/auth";
+  import {db, auth} from '../firebase/firebase'
+  import router from '@/router';
+  const route = useRouter
   export default {
     data() {
+      const logout = async() => {
+              signOut(auth).then(() => {
+        // Sign-out successful.
+        setTimeout(() => {
+          router.push('/')
+        }, 1000);
+      })
+      .catch((error) => {
+        // An error happened.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode)
+      });
+      }
+
       return {
         search:'',
         content: ''

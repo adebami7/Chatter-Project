@@ -78,7 +78,7 @@
   
       <v-main class="align-center justify-center" style="min-height: 300px; margin: 30px 0 0 0;">
        <h1 style="text-align: center; margin: 0 0 0 30px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 70px;">
-        Welome to <h1 style="margin: 2px 0 0 -10px ;">FAOYE</h1>
+        Welome to <h1 style="margin: 2px 0 0 -10px ;">MOMENT</h1>
        </h1>
        <p class="mag" style="margin: 0 0 0 300px;"><img src="src/moment.png" alt="logo"></p>
       </v-main>
@@ -157,10 +157,27 @@
   <script lang="ts">
   import { defineComponent, ref } from 'vue';
   import { useRouter } from 'vue-router';
-
+  import { getAuth, signOut } from "firebase/auth";
+  import {db, auth} from '../firebase/firebase'
+  import router from '@/router';
   const route = useRouter
   export default defineComponent({
     data () {
+      const logout = async() => {
+              signOut(auth).then(() => {
+        // Sign-out successful.
+        setTimeout(() => {
+          router.push('/')
+        }, 1000);
+      })
+      .catch((error) => {
+        // An error happened.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode)
+      });
+      }
+      
       return {
         search:'',
       }

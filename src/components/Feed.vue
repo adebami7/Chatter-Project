@@ -198,8 +198,30 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { useRouter } from 'vue-router';
+import { getAuth, signOut } from "firebase/auth";
+import {db, auth} from '../firebase/firebase'
+import router from '@/router';
+import { collection, addDoc } from "firebase/firestore"; 
+
+const route = useRouter
 export default defineComponent({
     data () {
+      const logout = async() => {
+              signOut(auth).then(() => {
+        // Sign-out successful.
+        setTimeout(() => {
+          router.push('/')
+        }, 1000);
+      })
+      .catch((error) => {
+        // An error happened.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode)
+      });
+      }
+
       return {
         search: '',
         tab: null,

@@ -80,6 +80,9 @@
 import router from '@/router';
 import { ref, onMounted, onUnmounted } from 'vue';
 import { useRouter } from 'vue-router';
+import { getAuth,  createUserWithEmailAndPassword } from "firebase/auth";
+import {db, auth} from '../firebase/firebase'
+
 
 const route = useRouter();
 export default {
@@ -99,15 +102,34 @@ export default {
     
 
     const handleArrowKeys = (event: KeyboardEvent) => {
-  const { key } = event;
-  
-  if (key === 'ArrowLeft' && activeInputIndex.value > 0) {
-    activeInputIndex.value--;
-  } else if (key === 'ArrowRight' && activeInputIndex.value < confirmationCode.value.length - 1) {
-    activeInputIndex.value++;
-  }
-};
+      const { key } = event;
+      
+      if (key === 'ArrowLeft' && activeInputIndex.value > 0) {
+        activeInputIndex.value--;
+      } else if (key === 'ArrowRight' && activeInputIndex.value < confirmationCode.value.length - 1) {
+        activeInputIndex.value++;
+      }
+    };
 
+    const registeration = async() => {
+    createUserWithEmailAndPassword(auth, email.value, password.value)
+    .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    setTimeout(() => {
+          router.push('/blog')
+        }, 1000);
+    // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode)
+      // ..
+    });
+
+    
+    }
 
     onMounted(() => {
       window.addEventListener('keydown', handleArrowKeys);
@@ -124,9 +146,7 @@ export default {
         closeConfirmationModal();
         setTimeout(() => {
           alert('Confirmation successful!');
-          setTimeout(() => {
-            router.push('/blog');
-          }, 0);
+          registeration()
         }, 0);
         // Additional code for further processing (e.g., redirecting to a new page)
       } else {
