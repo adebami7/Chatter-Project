@@ -14,6 +14,7 @@
           placeholder="Email address"
           prepend-inner-icon="mdi-email-outline"
           variant="outlined"
+          v-model="email"
         ></v-text-field>
   
         <div class="text-subtitle-1 text-medium-emphasis d-flex align-center justify-space-between">
@@ -35,6 +36,7 @@
           placeholder="Enter your password"
           prepend-inner-icon="mdi-lock-outline"
           variant="outlined"
+          v-model="password"
           @click:append-inner="visible = !visible"
         ></v-text-field>
   
@@ -48,14 +50,12 @@
           </v-card-text> -->
         </v-card>
 
-        <router-link to="/blog" 
-        class="v-btn-link">
         <v-btn 
         style="background-color: #222B4C; color: white;" 
-        dark block>
+        dark block @click="signin">
         Log In
         </v-btn>
-      </router-link>
+      
   
         <v-card-text class="text-center">
           <a
@@ -82,15 +82,18 @@ import router from '@/router';
 
 const route = useRouter();
 
-export default {
-  setup() {
-    const email = ref('');
-    const password = ref('');
-    const visible = ref(false);
-  
+export default defineComponent({
+  data() {
+      return {
+      email : '',
+      password : '',
+      visible: false,
+    };
+  },
 
-    const login = async() => {
-      signInWithEmailAndPassword(auth, email.value, password.value)
+  methods: {
+    async signin (){
+      signInWithEmailAndPassword(auth, this.email,this.password)
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
@@ -103,30 +106,11 @@ export default {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode)
+        console.log(this.email)
       });
     }
-
-  //   const forgotpassword = async() => {
-  //     sendPasswordResetEmail(auth, email.value)
-  // .then(() => {
-  //   alert('Confirmation successful!');
-  //   // Password reset email sent!
-  //   // ..
-  // })
-  // .catch((error) => {
-  //   const errorCode = error.code;
-  //   const errorMessage = error.message;
-  //   // ..
-  // });
-  //   }
-
-      return {
-      email,
-      password,
-      visible
-    };
   }
-}
+})
 
 
 </script>
