@@ -105,7 +105,7 @@
           <v-window v-model="tab">
             <v-window-item value="one">
               <div class="body">
-                <div v-for="post in posts" :key="post.id" class="post">
+                <div v-for="post in filteredFeeds" :key="post.id" class="post">
                   <div class="post-header">
                     <v-avatar style="margin-right: 10px;">
                       <img :src="post.avatar" alt="Avatar">
@@ -231,10 +231,21 @@ export default defineComponent({
           ...doc.data()
         }
       })
-      console.log(this.posts[0].commentImages[0].url)
   }
-}
+},
 
+computed: {
+    filteredFeeds(){
+      let feed = this.posts
+      if (this.search != '' && this.search) {
+        feed = feed.filter((item) => {
+          return item.title.toLowerCase().includes(this.search.toLowerCase())
+        })
+      }
+      return feed 
+    }
+  }
+  
    
   });
 

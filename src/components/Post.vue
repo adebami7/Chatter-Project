@@ -51,8 +51,8 @@
 
     <v-app-bar>
       <v-spacer></v-spacer>
-      <v-text-field v-model="search" append-icon="mdi-magnify" density="compact" label="Search Moment" single-line
-        hide-details></v-text-field>
+      <!-- <v-text-field v-model.trim="search" append-icon="mdi-magnify" density="compact" label="Search Moment" single-line
+        hide-details></v-text-field> -->
       <v-list-item style="margin: 0 10px 0 0; padding: 0 1px 0 10px; width: 24px;"
         prepend-icon="mdi-bell-outline"></v-list-item>
       <v-list-item style="margin: 0 1px 0 0; padding: 0 5px 0 5px;"
@@ -199,6 +199,7 @@ export default {
       const storageRef = ref(storage, file.name);
       uploadBytes(storageRef, file).then((snapshot) => {
         console.log('Uploaded a blob or file!');
+        
       });
       // const imageUrl = await storageRef;
       // this.image = imageUrl;
