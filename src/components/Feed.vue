@@ -3,7 +3,7 @@
     <v-navigation-drawer class="bg-light" theme="light" permanent>
       <v-list-item>
         <template v-slot:prepend>
-          <img src="/src/moment.png" alt="Comment Image" style="margin: 0px; width: 150px; height: 80px;">
+          <img src="../moment.png" alt="Comment Image" style="margin: 0px; width: 150px; height: 80px;">
         </template>
 
       </v-list-item>

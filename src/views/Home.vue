@@ -6,7 +6,7 @@
     <nav class="navbar navbar-expand-lg bg-light " style="height: 50px;">
         <div class="container-fluid">
             <!-- <a class="navbar-brand" href="#">Navbar</a> -->
-            <p class="img"><img src="src/moment.png" width="150px" height="100px" style="margin: 0px; padding: 15px 0 0 0;" alt="logo"></p>
+            <p class="img"><img src="../moment.png" width="150px" height="100px" style="margin: 0px; padding: 15px 0 0 0;" alt="logo"></p>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -32,7 +32,7 @@
     </nav>
 
     <div class="tell">
-        <img class="image" src="src/unsplash_-2vD8lIhdnw.png" alt="logo">
+        <img class="image" src="../unsplash_-2vD8lIhdnw.png" alt="logo">
         <div class="well">
             <h1>
                 Welcome to Moment: A Haven for Text-<br>Based Content
@@ -72,7 +72,7 @@
         
         <div class="box">
             <div>
-                <img src="src/Group 1.png" id="pic">
+                <img src="../Group 1.png" id="pic">
                 <h4>Analytics</h4>
                 <p class="boxes">Analytics to track the number 
                     <br>of views, likes and comment 
@@ -82,7 +82,7 @@
                 </p>
             </div>
             <div>
-                <img src="src/Group 2.png" id="pic">
+                <img src="../Group 2.png" id="pic">
                 <h4>Social interactions</h4>
                 <p class="boxes">
                     Users on the platform  
@@ -92,7 +92,7 @@
                 </p>
             </div>
             <div>
-                <img src="src/Group 3.png" id="pic">
+                <img src="../Group 3.png" id="pic">
                 <h4>Content creation</h4>
                 <p class="boxes">
                     Write nice and appealing with
@@ -103,7 +103,7 @@
         </div>
     </div>
     <div class="eclipse">
-        <img src="src/unsplash_ZHvM3XIOHoE.png" style="margin-left: 40px; padding: 50px 0 50px 30px; border-radius: 50%;">
+        <img src="../unsplash_ZHvM3XIOHoE.png" style="margin-left: 40px; padding: 50px 0 50px 30px; border-radius: 50%;">
         <h2 style="font-size: 15px; padding:100px 0 0 100px;">
             "Moment has become an integral part of my online experience. As a user of this incredible blogging platform, I 
             <br>have discovered a vibrant community of individuals who are passionate about sharing their ideas and engaging
@@ -120,9 +120,9 @@
         
     </div>
     <div class="eclipse-3">
-        <div><img src="src/Mask group (2).png" style="margin-left: 110px; padding: 50px 0 30px 30px;"></div>
-        <div><img src="src/Mask group (1).png" style="margin-left: -160px; padding: 300px 0 20px 0px;"></div>
-        <div><img src="src/Mask group.png" style="margin-left: 40px; padding: 165px 0 30px 30px;"></div>
+        <div><img src="../Mask group (2).png" style="margin-left: 110px; padding: 50px 0 30px 30px;"></div>
+        <div><img src="../Mask group (1).png" style="margin-left: -160px; padding: 300px 0 20px 0px;"></div>
+        <div><img src="../Mask group.png" style="margin-left: 40px; padding: 165px 0 30px 30px;"></div>
         
         <h2 style="font-size: 35px; padding:50px 0 0 100px;">
             Write, read and connect 
@@ -148,7 +148,7 @@
     <div class="row">
       <div class="col-lg-3 mb-3">
         <a class="d-inline-flex align-items-center mb-2 link-dark text-decoration-none" href="/" aria-label="Bootstrap">
-          <img src="src/moment.png" width="200px" height="100px"  class="d-block me-2"  />
+          <img src="../moment.png" width="200px" height="100px"  class="d-block me-2"  />
           <span class="fs-5"></span>
         </a>
 

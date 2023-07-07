@@ -3,7 +3,7 @@
     <v-navigation-drawer class="bg-light" theme="light" permanent>
       <v-list-item>
         <template v-slot:prepend>
-          <img src="/src/moment.png" alt="Comment Image" style="margin: 0px; width: 150px; height: 80px;">
+          <img src="../moment.png" alt="Comment Image" style="margin: 0px; width: 150px; height: 80px;">
         </template>
       </v-list-item>
       <v-list-item-title style="margin: 0 0 0 40px;">Overview</v-list-item-title>
@@ -81,7 +81,7 @@
     <v-layout>
       <v-navigation-drawer class="bg-light" theme="light" permanent>
         <v-list-item style="padding: 20px 0 0 40px;" title="Overview">
-          <img src="src/moment.png" alt="Comment Image">
+          <img src="../moment.png" alt="Comment Image">
         </v-list-item>
         <v-list class="over" color="transparent">
           <v-list-item prepend-icon="mdi-post-outline" style="font-size: 15px;">
@@ -293,4 +293,3 @@ button {
   text-decoration: none;
 }
 </style>
-  
