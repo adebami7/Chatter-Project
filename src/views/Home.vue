@@ -59,7 +59,7 @@
             </p>
         </div>
         <div class="mage">
-            <img src="src/unsplash_87gLIFoj79c.png" alt="logo">
+            <img src="../unsplash_87gLIFoj79c.png" alt="logo">
         </div>
     </div>
     <div class="why">
