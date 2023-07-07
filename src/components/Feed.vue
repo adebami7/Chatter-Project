@@ -107,9 +107,6 @@
               <div class="body">
                 <div v-for="post in filteredFeeds" :key="post.id" class="post">
                   <div class="post-header">
-                    <v-avatar style="margin-right: 10px;">
-                      <img :src="post.avatar" alt="Avatar">
-                    </v-avatar>
                     <h2 class="post-title" style="font-size: 20px;">{{ post.title }}
                       <p class="post-meta" style="font-size: 10px; margin-top: 8px;">Posted on {{ post.date }}</p>
                     </h2>
@@ -133,21 +130,24 @@
 
             <v-window-item value="two">
               <div class="body">
-                <div v-for="post in posts" :key="post.id" class="post">
+                <div v-for="post in filteredFeeds" :key="post.id" class="post">
                   <div class="post-header">
-                    <v-avatar style="margin-right: 10px;">
-                      <img :src="post.avatar" alt="Avatar">
-                    </v-avatar>
                     <h2 class="post-title" style="font-size: 20px;">{{ post.title }}
                       <p class="post-meta" style="font-size: 10px; margin-top: 8px;">Posted on {{ post.date }}</p>
                     </h2>
                   </div>
                   <h3 class="post-subtitle">{{ post.subtitle }}</h3>
+                  <div style="display: flex; margin: 0px; padding: 0px; ">
+                    <v-list-item prepend-icon="mdi-book-open-variant" style="width: 24px; padding: 0 10px;"></v-list-item>
+                    <p class="post-time" style="margin-bottom: 0px;padding: 9.5px 0 0 15px;">{{ post.time }}</p>
+                  </div>
+
+
                   <p class="post-content" style="font-size: 10px;">{{ post.content }}</p>
                   <!-- Display images after comments -->
                   <div class="comment-images">
-                    <!-- <img v-for="image in post.commentImages" :key="image.id" :src="image.url" alt="Comment Image"> -->
-                  {{ post.commentImages }}
+                    <img :src="post.commentImage" alt="Comment Image">
+
                   </div>
                 </div>
               </div>
@@ -155,21 +155,24 @@
 
             <v-window-item value="three">
               <div class="body">
-                <div v-for="post in posts" :key="post.id" class="post">
+                <div v-for="post in filteredFeeds" :key="post.id" class="post">
                   <div class="post-header">
-                    <v-avatar style="margin-right: 10px;">
-                      <img :src="post.avatar" alt="Avatar">
-                    </v-avatar>
                     <h2 class="post-title" style="font-size: 20px;">{{ post.title }}
                       <p class="post-meta" style="font-size: 10px; margin-top: 8px;">Posted on {{ post.date }}</p>
                     </h2>
                   </div>
                   <h3 class="post-subtitle">{{ post.subtitle }}</h3>
+                  <div style="display: flex; margin: 0px; padding: 0px; ">
+                    <v-list-item prepend-icon="mdi-book-open-variant" style="width: 24px; padding: 0 10px;"></v-list-item>
+                    <p class="post-time" style="margin-bottom: 0px;padding: 9.5px 0 0 15px;">{{ post.time }}</p>
+                  </div>
+
+
                   <p class="post-content" style="font-size: 10px;">{{ post.content }}</p>
                   <!-- Display images after comments -->
                   <div class="comment-images">
-                    <!-- <img v-for="image in post.commentImages" :key="image.id" :src="image.url" alt="Comment Image"> -->
-                    {{ post.commentImages }}
+                    <img :src="post.commentImage" alt="Comment Image">
+
                   </div>
                 </div>
               </div>

@@ -72,7 +72,7 @@
         
         <div class="box">
             <div>
-                <img src="../Group 1.png" id="pic">
+                <img src="../Group1.png" id="pic">
                 <h4>Analytics</h4>
                 <p class="boxes">Analytics to track the number 
                     <br>of views, likes and comment 
@@ -82,7 +82,7 @@
                 </p>
             </div>
             <div>
-                <img src="../Group 2.png" id="pic">
+                <img src="../Group2.png" id="pic">
                 <h4>Social interactions</h4>
                 <p class="boxes">
                     Users on the platform  
@@ -92,7 +92,7 @@
                 </p>
             </div>
             <div>
-                <img src="../Group 3.png" id="pic">
+                <img src="../Group3.png" id="pic">
                 <h4>Content creation</h4>
                 <p class="boxes">
                     Write nice and appealing with
@@ -120,9 +120,9 @@
         
     </div>
     <div class="eclipse-3">
-        <div><img src="../Mask group (2).png" style="margin-left: 110px; padding: 50px 0 30px 30px;"></div>
-        <div><img src="../Mask group (1).png" style="margin-left: -160px; padding: 300px 0 20px 0px;"></div>
-        <div><img src="../Mask group.png" style="margin-left: 40px; padding: 165px 0 30px 30px;"></div>
+        <div><img src="../Maskgroup(2).png" style="margin-left: 110px; padding: 50px 0 30px 30px;"></div>
+        <div><img src="../Maskgroup(1).png" style="margin-left: -160px; padding: 300px 0 20px 0px;"></div>
+        <div><img src="../Maskgroup.png" style="margin-left: 40px; padding: 165px 0 30px 30px;"></div>
         
         <h2 style="font-size: 35px; padding:50px 0 0 100px;">
             Write, read and connect 

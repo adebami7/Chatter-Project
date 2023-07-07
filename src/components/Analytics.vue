@@ -92,9 +92,6 @@
       </h4>
       <div class="post">
         <div class="post-header" >
-          <v-avatar style="margin-right: 10px;">
-            <img src="https://randomuser.me/api/portraits/women/85.jpg" alt="Avatar">
-          </v-avatar>
           <h2 class="post-title" style="font-size: 20px;"> Ademide Oye
           <p class="post-meta" style="font-size: 10px; margin-top: 8px;">Front-End Software Engineer June 1, 2023</p>
           </h2>
