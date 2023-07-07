@@ -59,20 +59,20 @@
         prepend-avatar="https://cdn.vuetifyjs.com/images/john.jpg"></v-list-item>
     </v-app-bar>
 
-    <v-main class="align-center justify-center" style="min-height: 300px; margin: 30px 0 0 0;">
-      <v-toolbar style="background-color: white;">
+    <v-main style="min-height: 300px; margin: 30px 0 0 0;">
+      <v-toolbar class="align-center justify-center" style="background-color: white;">
 
         <v-spacer></v-spacer>
-        <v-btn @click="Feeds" style=" background-color: #222B4C;">
+        <v-btn @click="Feeds" :disabled="disablePublish" style=" background-color: #222B4C;">
           Publish
         </v-btn>
+        
       </v-toolbar>
-      <textarea v-model="title" placeholder="Name" style="resize: none;"></textarea>
-      <textarea v-model="date" placeholder="Date" style="resize: none;"></textarea>
-      <textarea v-model="subtitle" placeholder="Sub" style="resize: none;"></textarea>
-      <textarea v-model="time" placeholder="Time" style="resize: none;"></textarea>
+      <input v-model="title" type="text" placeholder="Name" style="margin: 0 0 20px 0; padding: 20px 0 20px 10px;">
+      <!-- <input v-model="date" type="text" placeholder="Date">
+      <input v-model="time" type="text" placeholder="Time"> -->
+      <input v-model="subtitle" type="text" placeholder="Sub-title" style="margin: 0 0 20px 0; padding: 20px 0 20px 10px;width: 200px;">
       <textarea v-model="content" placeholder="Write your content here" style="resize: none;"></textarea>
-      <textarea v-model="avatar" placeholder="Avatar" style="resize: none;"></textarea>
       <input type="file" @change="handleImageUpload" accept="image/*" style="margin-bottom: 16px;">
     </v-main>
   </v-layout>
@@ -135,7 +135,7 @@ import { getAuth, signOut } from "firebase/auth";
 import { db, auth, storage } from '../firebase/firebase'
 import router from '@/router';
 import { collection, addDoc } from "firebase/firestore";
-import { getStorage, ref, uploadBytes } from "firebase/storage";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const storage = getStorage();
 
@@ -149,6 +149,7 @@ export default {
         setTimeout(() => {
           router.push('/')
         }, 1000);
+        
       })
         .catch((error) => {
           // An error happened.
@@ -159,14 +160,13 @@ export default {
     }
 
     return {
-      search: '',
       content: '',
       title: '',
       date: '',
       subtitle: '',
       time: '',
-      avatar: '',
       image: null,
+      disablePublish:true,
     };
   },
   methods: {
@@ -174,15 +174,11 @@ export default {
       try {
         const docRef = await addDoc(collection(db, "blogs"), {
           title: this.title,
-          date: this.date,
+          date: new Date().toDateString(),
           subtitle: this.subtitle,
           time: this.time,
           content: this.content,
-          avatar: this.avatar,
-          commentImages: {
-            id: 4,
-            url: this.image
-          }
+          commentImages: this.image
         });
         console.log("Document written with ID: ", docRef.id);
 
@@ -195,38 +191,46 @@ export default {
 
     async handleImageUpload(event) {
       const file = event.target.files[0];
-      console.log(file)
       const storageRef = ref(storage, file.name);
+
       uploadBytes(storageRef, file).then((snapshot) => {
         console.log('Uploaded a blob or file!');
-        
+        console.log(snapshot.ref)
+
+        getDownloadURL(ref(storage, file.name))
+          .then((url) => {
+            this.image = url
+            console.log(this.image)
+            this.disablePublish=false
+          })
+          .catch((error) => {
+            console.log(error)
+          });
+
       });
-      // const imageUrl = await storageRef;
-      // this.image = imageUrl;
-
     },
+    
 
-    publish() {
-      // Perform the publishing logic here
-      // You can access the content using this.content
-      // You can access the uploaded image URL using this.image
-      console.log(this.title);
-      console.log(this.date);
-      console.log(this.subtitle);
-      console.log(this.time);
-      console.log(this.content);
-      console.log(this.avatar);
-      console.log(this.image);
-      // Clear the form
-      this.title = '';
-      this.date = '';
-      this.subtitle = '';
-      this.time = '';
-      this.content = '';
-      this.avatar = '';
-      this.image = null;
-    }
+
+  publish() {
+    // Perform the publishing logic here
+    // You can access the content using this.content
+    // You can access the uploaded image URL using this.image
+    console.log(this.title);
+    console.log(this.date);
+    console.log(this.subtitle);
+    console.log(this.time);
+    console.log(this.content);
+    console.log(this.image);
+    // Clear the form
+    this.title = '';
+    this.date = '';
+    this.subtitle = '';
+    this.time = '';
+    this.content = '';
+    this.image = null;
   }
+}
 };
 </script>
   

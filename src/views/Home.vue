@@ -14,7 +14,7 @@
                 <div class="navbar-nav" style="font-weight: bold; font-size: 20px;">
                     <a class="nav-link" href="/">Home</a>
                     <!-- <a class="nav-link" href="#">About Us</a> -->
-                    <a class="nav-link" href="/blog">Blogs</a>
+                    <a class="nav-link" href="/auth">Blogs</a>
                     <!-- <a class="nav-link" href="#">Contact</a> -->
                     <!-- <a class="nav-link" href="#"><router-link to="/blog" 
                         class="v-btn-link">
