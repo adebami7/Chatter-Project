@@ -13,6 +13,17 @@ import * as components from 'vuetify/components';
 import * as directives from 'vuetify/directives';
 import '@mdi/font/css/materialdesignicons.css'
 
+// // Before
+// import { someModule } from './someModule';
+
+// // After (using dynamic import)
+// const loadSomeModule = () => import('./someModule');
+
+// // Usage
+// loadSomeModule().then((module) => {
+//   // Use the module
+// });
+
 const vuetify = createVuetify({
   components,
   directives,
