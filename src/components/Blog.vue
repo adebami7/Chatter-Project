@@ -51,9 +51,10 @@
       </v-list>
 
       <template v-slot:append>
-        <div class="log"><router-link to="/" class="v-btn-link"><v-btn style="background-color: #222B4C; color: white; border-radius: 2px;" dark block>
-      Log Out
-</v-btn></router-link></div>
+        <div class="log" @click="logout"><v-btn style="background-color: #222B4C; color: white; border-radius: 2px;" dark
+            block>
+            Log Out
+          </v-btn></div>
 </template>
     </v-navigation-drawer>
 
@@ -91,7 +92,7 @@
     <v-navigation-drawer
       class="bg-light"
       theme="light"
-      permanent
+      
     >
     
     <v-list-item style="padding: 20px 0 0 40px;" title="Overview">
@@ -163,7 +164,15 @@ import router from '@/router';
 const route = useRouter
 export default defineComponent({
   data () {
-    const logout = async() => {
+    
+    return {
+      search:'',
+    }
+
+  },
+
+  methods: {
+    async logout() {
             signOut(auth).then(() => {
       // Sign-out successful.
       setTimeout(() => {
@@ -177,13 +186,8 @@ export default defineComponent({
       console.log(errorCode)
     });
     }
-    
-    return {
-      search:'',
-    }
-
-    }
-  });
+  }
+});
 
 </script>
 

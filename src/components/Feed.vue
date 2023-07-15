@@ -1,6 +1,6 @@
 <template>
   <v-layout class="rounded rounded-md">
-    <v-navigation-drawer class="bg-light" theme="light" permanent>
+    <v-navigation-drawer class="bg-light" theme="light" >
       <v-list-item>
         <template v-slot:prepend>
           <img src="../moment.png" alt="Comment Image" style="margin: 0px; width: 150px; height: 80px;">
@@ -50,10 +50,10 @@
       </v-list>
 
       <template v-slot:append>
-        <div class="log"><router-link to="/" class="v-btn-link"><v-btn
-              style="background-color: #222B4C; color: white; border-radius: 2px;" dark block>
-              Log Out
-            </v-btn></router-link></div>
+        <div class="log" @click="logout"><v-btn style="background-color: #222B4C; color: white; border-radius: 2px;" dark
+            block>
+            Log Out
+          </v-btn></div>
 
       </template>
     </v-navigation-drawer>
@@ -121,7 +121,7 @@
                   <p class="post-content" style="font-size: 10px;">{{ post.content }}</p>
                   <!-- Display images after comments -->
                   <div class="comment-images">
-                    <img :src="post.commentImage" alt="Comment Image">
+                    <img :src="post.commentImage" alt="Comment Image" style="object-fit: contain;" width="600" height="400">
 
                   </div>
                 </div>
@@ -201,20 +201,6 @@ export default defineComponent({
     this.blogs()
   },
   data() {
-    const logout = async () => {
-      signOut(auth).then(() => {
-        // Sign-out successful.
-        setTimeout(() => {
-          router.push('/')
-        }, 1000);
-      })
-        .catch((error) => {
-          // An error happened.
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.log(errorCode)
-        });
-    }
 
     return {
       search: '',
@@ -226,7 +212,7 @@ export default defineComponent({
 
   methods: {
     async blogs() {
-     const querySnapshot = await getDocs(collection(db, "blogs"));
+      const querySnapshot = await getDocs(collection(db, "blogs"));
 
       this.posts = querySnapshot.docs.map(doc => {
         return {
@@ -234,29 +220,47 @@ export default defineComponent({
           ...doc.data()
         }
       })
-  }
-},
+    },
 
-computed: {
-    filteredFeeds(){
+    async logout () {
+    signOut(auth).then(() => {
+      // Sign-out successful.
+      setTimeout(() => {
+        router.replace('/')
+      }, 1000);
+    })
+      .catch((error) => {
+        // An error happened.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode)
+      });
+    }
+  },
+
+
+
+    computed: {
+    filteredFeeds() {
       let feed = this.posts
       if (this.search != '' && this.search) {
         feed = feed.filter((item) => {
           return item.title.toLowerCase().includes(this.search.toLowerCase())
         })
       }
-      return feed 
+      return feed
     }
   }
   
    
-  });
+});
 
 </script>
 
 <style scoped>
 .comment-images {
   margin-bottom: 30px;
+  object-fit: cover;
 }
 
 .post-header {

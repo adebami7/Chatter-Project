@@ -141,8 +141,7 @@ export default {
 
     const confirmCode = () => {
       // Perform confirmation code validation
-      if (confirmationCode.value.join('') === '1234') {
-        // Replace '1234' with your own validation logic
+      if (confirmationCode.value.join('') === '5965') {
         closeConfirmationModal();
         setTimeout(() => {
           alert('Confirmation successful!');
@@ -150,7 +149,7 @@ export default {
         }, 0);
         // Additional code for further processing (e.g., redirecting to a new page)
       } else {
-        alert('Invalid confirmation code. Please try again.');
+        alert('Invalid confirmation code. Confirmation code is 5965');
       }
     };
 

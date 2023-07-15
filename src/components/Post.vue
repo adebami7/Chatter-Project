@@ -1,6 +1,6 @@
 <template>
   <v-layout class="rounded rounded-md">
-    <v-navigation-drawer class="bg-light" theme="light" permanent>
+    <v-navigation-drawer class="bg-light" theme="light" >
       <v-list-item>
         <template v-slot:prepend>
           <img src="../moment.png" alt="Comment Image" style="margin: 0px; width: 150px; height: 80px;">
@@ -178,7 +178,7 @@ export default {
           subtitle: this.subtitle,
           time: this.time,
           content: this.content,
-          commentImages: this.image
+          commentImage: this.image
         });
         console.log("Document written with ID: ", docRef.id);
 

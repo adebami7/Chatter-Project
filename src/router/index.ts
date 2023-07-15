@@ -13,39 +13,48 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
+      meta: { requiresAuth: true },
     },
     {
       path: '/auth',
       name: 'auth',
-      component: Auth
+      component: Auth,
+      meta: { requiresAuth: true },
     },
     {
       path: '/login',
       name: 'login',
-      component: Login
+      component: Login,
+      meta: { requiresAuth: true },
     },
     {
       path: '/blog',
       name: 'blog',
-      component: Blog
+      component: Blog,
+      meta: { requiresAuth: true },
     },
     {
       path: '/feed',
       name: 'feed',
-      component: Feed
+      component: Feed,
+      meta: { requiresAuth: true },
     },
     {
       path: '/analytics',
       name: 'analytics',
-      component: Analytics
+      component: Analytics,
+      meta: { requiresAuth: true },
     },
     {
       path: '/post',
       name: 'post',
-      component: Post
+      component: Post,
+      meta: { requiresAuth: true },
     },
   ]
 })
+
+
 
 export default router

@@ -71,3 +71,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* Styles for screens with a maximum width of 768 pixels (e.g., tablets) */
+@media (max-width: 768px) {
+  /* Add your CSS styles here */
+}
+
+/* Styles for screens with a maximum width of 480 pixels (e.g., mobile phones) */
+@media (max-width: 480px) {
+  /* Add your CSS styles here */
+}
