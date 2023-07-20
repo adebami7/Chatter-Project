@@ -77,10 +77,11 @@ import { useRouter } from 'vue-router';
 import { getAuth, signInWithEmailAndPassword} from "firebase/auth";
 import {db, auth} from '../firebase/firebase'
 import router from '@/router';
-import { storeToRefs } from 'pinia';
+import pinia from "../stores/store";
+import {useCounterStore} from "../stores/counter";
 
 
-
+const stores = useCounterStore(pinia);
 const route = useRouter();
 
 export default defineComponent({
@@ -98,8 +99,10 @@ export default defineComponent({
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
-        // stores.uid = userCredential.user.uid
+        stores.signUser = userCredential.user.uid
+        
         setTimeout(() => {
+
           router.push('/blog')
         }, 1000);
         // ...
@@ -109,6 +112,7 @@ export default defineComponent({
         const errorMessage = error.message;
         console.log(errorCode)
         console.log(this.email)
+        console.log(stores.signUser)
       });
     }
   }

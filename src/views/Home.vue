@@ -5,18 +5,19 @@ export default defineComponent({
         return {
             images: [
                 {
-                    src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg',
+                    src: 'https://educatoroid.com/wp-content/uploads/2023/03/Is-College-Hard-1152x768.jpg',
                 },
                 {
-                    src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg',
+                    src: 'https://c0.wallpaperflare.com/preview/639/306/330/aerial-background-blog-cafe.jpg',
                 },
                 {
-                    src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg',
+                    src: 'https://cutewallpaper.org/28/computer-coming-to-life-hd-wallpaper/190655694.jpg',
                 },
                 {
-                    src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg',
+                    src: 'https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YmxvZyUyMGJhY2tncm91bmR8ZW58MHx8MHx8fDA%3D&w=1000&q=80',
                 },
             ],
+
         }
     }
 })
@@ -56,32 +57,24 @@ export default defineComponent({
         </nav>
 
         <div class="tell">
-            <img class="image" src="../unsplash_-2vD8lIhdnw.png" alt="logo">
-            <div class="well">
-                <h1>
-                    Welcome to Moment: A Haven for Text-<br>Based Content
-                </h1>
-                <p id="un">Unleash the Power of Words, Connect with Like-minded Readers <br>and Writers</p>
+                <v-carousel cycle hide-delimiters :show-arrows="false" height="700">
+                    <v-carousel-item v-for="(image, i) in images" :key="i" :src="image.src" cover hide-delimiters>
+                        <div class="well">
+                            <h1>
+                                Welcome to Moment: A Haven for Text-<br>Based Content
+                            </h1>
+                            <p id="un">Unleash the Power of Words, Connect with Like-minded Readers <br>and Writers</p>
 
-            </div>
-            <div class="get"><router-link to="/auth"><v-btn style="background-color: #222B4C; color: white;" dark>
-                        Get Started
-                    </v-btn></router-link></div>
-        </div>
-        <v-carousel :show-arrows="false">
-            <v-carousel-item v-for="(image, i) in images" :key="i" :src="image.src" cover></v-carousel-item>
-        </v-carousel>
-        <!-- <v-carousel cycle height="500" hide-delimiter-background show-arrows="hover">
-            <v-carousel-item v-for="(image, i) in images" :key="i">
-                <v-sheet :src="image[i]" height="100%">
-                    <div class="d-flex fill-height justify-center align-center">
-                        <div class="text-h2">
-                            {{ image }} Images
                         </div>
-                    </div>
-                </v-sheet>
-            </v-carousel-item>
-        </v-carousel> -->
+                        <div class="get"><router-link to="/auth"><v-btn style="background-color: #222B4C; color: white;"
+                                    dark>
+                                    Get Started
+                                </v-btn></router-link>
+                        </div>
+                    </v-carousel-item>
+                </v-carousel>
+        </div>
+
         <div class="about">
             <div>
                 <h3>
@@ -261,6 +254,7 @@ p .img {
     position: relative;
     display: inline-block;
     background-color: black;
+    width: 100%;
 }
 
 .image {
@@ -268,9 +262,19 @@ p .img {
     opacity: 0.6;
 }
 
+/* Style the carousel item images to take the full width of the carousel container */
+.v-carousel-item img {
+  width: 100%;
+  height: auto; /* Maintain the aspect ratio of the images */
+}
+
+/* Optional: Adjust the height of the carousel container if needed */
+.v-carousel {
+  max-height: 500px; /* Set a maximum height for the carousel container */
+}
 .well {
     position: absolute;
-    top: 40%;
+    top: 30%;
     left: 45%;
     transform: translate(-50%, -50%);
     color: white;
@@ -278,10 +282,14 @@ p .img {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+h1{
+    font-size: 38px;
+}
+
 .get {
     position: absolute;
-    top: 55%;
-    left: 24%;
+    top: 45%;
+    left: 23%;
     transform: translate(-50%, -50%);
     color: #ffffff;
     font-size: 14px;

@@ -6,7 +6,10 @@ import Blog from '../views/Blog.vue'
 import Feed from '../views/Feed.vue'
 import Analytics from '../views/Analytics.vue'
 import Post from '../views/Post.vue'
+import pinia from "../stores/store";
+import { useCounterStore } from "../stores/counter";
 
+const stores = useCounterStore(pinia);
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -14,19 +17,19 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: Home,
-      meta: { requiresAuth: true },
+    
     },
     {
       path: '/auth',
       name: 'auth',
       component: Auth,
-      meta: { requiresAuth: true },
+     
     },
     {
       path: '/login',
       name: 'login',
       component: Login,
-      meta: { requiresAuth: true },
+    
     },
     {
       path: '/blog',
@@ -55,6 +58,26 @@ const router = createRouter({
   ]
 })
 
+router.beforeEach((to, from, next) => {
 
+  const currentUser = stores.signUser;
+  console.log(currentUser)
+
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+
+  const notRequiresAuth = to.matched.some(record => record.meta.notRequiresAuth);
+
+  if (requiresAuth && currentUser == '') {
+
+    next('/auth');
+
+  }
+ else {
+
+    next();
+
+  }
+
+});
 
 export default router
