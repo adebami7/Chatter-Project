@@ -136,6 +136,11 @@ import { db, auth, storage } from '../firebase/firebase'
 import router from '@/router';
 import { collection, addDoc } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import pinia from "../stores/store";
+import { useCounterStore } from "../stores/counter";
+
+
+const stores = useCounterStore(pinia);
 
 const storage = getStorage();
 
@@ -145,6 +150,7 @@ export default {
   data() {
     const logout = async () => {
       signOut(auth).then(() => {
+        stores.signUser=''
         // Sign-out successful.
         setTimeout(() => {
           router.push('/')

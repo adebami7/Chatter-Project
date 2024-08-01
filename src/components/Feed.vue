@@ -146,7 +146,7 @@
                   <p class="post-content" style="font-size: 10px;">{{ post.content }}</p>
                   <!-- Display images after comments -->
                   <div class="comment-images">
-                    <img :src="post.commentImage" alt="Comment Image">
+                    <img :src="post.commentImage" alt="Comment Image" style="object-fit: contain;" width="600" height="400">
 
                   </div>
                 </div>
@@ -171,7 +171,7 @@
                   <p class="post-content" style="font-size: 10px;">{{ post.content }}</p>
                   <!-- Display images after comments -->
                   <div class="comment-images">
-                    <img :src="post.commentImage" alt="Comment Image">
+                    <img :src="post.commentImage" alt="Comment Image" style="object-fit: contain;" width="600" height="400">
 
                   </div>
                 </div>
@@ -193,8 +193,11 @@ import { getAuth, signOut } from "firebase/auth";
 import { db, auth } from '../firebase/firebase'
 import router from '@/router';
 import { collection, getDocs } from "firebase/firestore";
+import pinia from "../stores/store";
+import { useCounterStore } from "../stores/counter";
 
 
+const stores = useCounterStore(pinia);
 const route = useRouter
 export default defineComponent({
   created() {
@@ -224,6 +227,7 @@ export default defineComponent({
 
     async logout () {
     signOut(auth).then(() => {
+      stores.signUser ='' 
       // Sign-out successful.
       setTimeout(() => {
         router.replace('/')

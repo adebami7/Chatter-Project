@@ -332,7 +332,7 @@ h3 {
     display: flex;
     margin-left: 100px;
     text-align: justify;
-
+    
 }
 
 #pic {

@@ -137,6 +137,11 @@ import { useRouter } from 'vue-router';
 import { getAuth, signOut } from "firebase/auth";
 import { db, auth } from '../firebase/firebase'
 import router from '@/router';
+import pinia from "../stores/store";
+import { useCounterStore } from "../stores/counter";
+
+
+const stores = useCounterStore(pinia);
 
 const route = useRouter
 export default defineComponent({
@@ -150,6 +155,7 @@ export default defineComponent({
   methods: {
     async logout() {
     signOut(auth).then(() => {
+      stores.signUser=''
       // Sign-out successful.
       setTimeout(() => {
         router.push('/')
